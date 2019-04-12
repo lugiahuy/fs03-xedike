@@ -7,8 +7,8 @@ const UserSchema = new mongoose.Schema({
   phone: { type: String, required: true },
   DOB: { type: Date, required: true },
   registerDate: { type: Date, default: new Date() },
-  numberOfTrips: { type: Number },
-  numberOfKms: { type: Number },
+  numberOfTrips: { type: Number, default: 0 },
+  numberOfKms: { type: Number, default: 0 },
   avatar: { type: String },
   isActive: { type: Boolean, default: true }
 });
@@ -17,3 +17,4 @@ const User = mongoose.model('User', UserSchema);
 module.exports = {
     User, UserSchema
 }
+
