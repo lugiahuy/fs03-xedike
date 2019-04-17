@@ -40,5 +40,23 @@ router.post('/register', (req, res) => {
         .catch(err => res.status(400).json(err))        
 })
 
+// api:     /api/users/login
+// desc:    login into system
+// access:  PUBLIC
+router.post('/login' , (req, res) => {
+    const {email, password} = req.body;
+
+    User.findOne({email})
+        .then(user => {
+            if(!user) return res.status(400).json({errors: "Email: ko ton tai"})
+
+            bcrypt.compare(password , user.password)
+                .then(result => {
+                    if(!result) return res.status(400).json({errors: "Sai Mat Khau"})
+
+                    res.status(200).json({msg: "Dang nhap thanh cong"})
+                })
+        })
+})
 
 module.exports = router;
