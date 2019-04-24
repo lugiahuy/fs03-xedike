@@ -217,13 +217,13 @@ router.post('/update',
 //API delete
 //desc: xoa mot user
 
-router.post('/detele-user',
-    passport.authenticate('jwt', {session: false}),
-    (req, res) => {
-        User.findOneAndRemove(req.user.id)
-            .then(console.log('xoa thanh cong'))
-            .catch(console.log)
-    }
-)
+// router.post('/detele-user',
+//     passport.authenticate('jwt', {session: false}),
+//     (req, res) => {
+//         User.findOneAndRemove(req.user.id)
+//             .then(console.log('xoa thanh cong'))
+//             .catch(console.log)
+//     }
+// )
 
 //

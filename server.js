@@ -9,7 +9,7 @@ require('dotenv').config();
 /* project packages */
 
 /* Connect DB */
-mongoose.connect('mongodb+srv://lugiahuy:<lugiahuy1997>@cluster0-fipio.mongodb.net/test?retryWrites=true', { useNewUrlParser: true })
+mongoose.connect('mongodb+srv://lugiahuy:lugiahuy1997@cluster0-fipio.mongodb.net/test?retryWrites=true', { useNewUrlParser: true })
     .then(console.log("Connected to DB"))
     .catch(console.log)
 
