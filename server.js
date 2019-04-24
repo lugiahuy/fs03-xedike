@@ -2,13 +2,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const multer = require('multer');
 
 require('dotenv').config();
 
 /* project packages */
 
 /* Connect DB */
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true})
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
     .then(console.log("Connected to DB"))
     .catch(console.log)
 
@@ -16,13 +17,18 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true})
 const app = express();
 
 /* middlewares */
+app.use('/uploads', express.static('uploads'))
 // parser
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
 // passport
 app.use(passport.initialize());
 require('./config/passport')(passport)
+
+
+
+
 // router
 app.use('/api/users', require('./routes/api/users'))
 
